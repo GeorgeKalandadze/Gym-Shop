@@ -4,7 +4,7 @@ require '../../Layouts/GuestLayout.php';
 
 $errors = array();
 $email = $password = '';
-
+$url = '';
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -18,17 +18,11 @@ if (isset($_POST['login'])) {
     if (empty($password)) {
         $errors['password'] = 'Password is required';
     }
-
-    // If there are no validation errors, perform login authentication
     if (empty($errors)) {
-        // Perform the login authentication
         $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
         $result = mysqli_query($conn, $sql);
-
         if (mysqli_num_rows($result) > 0) {
-            // Login successful
-            // Redirect to the dashboard or display success message
-            // ...
+            $url = "../../Products/Products.php";
         } else {
             $errors['login_failed'] = 'Invalid email or password';
         }
@@ -36,7 +30,7 @@ if (isset($_POST['login'])) {
 }
 ?>
 
-<form class="bg-white block p-4 w-[400px] rounded-md shadow-md" method="post">
+<form class="bg-white block p-4 w-[400px] rounded-md shadow-md" method="post" action="<?php echo empty($errors) ? $url : ''; ?>">
     <p class="text-xl leading-7 font-semibold text-center text-black">Sign in to your account</p>
     <?php if(isset($errors['login_failed'])): ?>
         <p class="text-red-700"><?=$errors['login_failed']?></p>
@@ -47,7 +41,7 @@ if (isset($_POST['login'])) {
                 name="email"
                 type="email"
                 class="border-2 border-gray-300 rounded-md px-4 py-2 w-72 mt-[25px] w-full"
-                value="<?=$email?>"
+                value="<?php echo htmlspecialchars($email); ?>"
         >
         <?php if(isset($errors['email'])): ?>
             <p class="text-red-700"><?=$errors['email']?></p>
@@ -59,7 +53,7 @@ if (isset($_POST['login'])) {
                 name="password"
                 type="password"
                 class="border-2 border-gray-300 rounded-md px-4 py-2 w-72 mt-[25px] w-full"
-                value="<?=$password?>"
+                value="<?php echo htmlspecialchars($password); ?>"
         >
         <?php if(isset($errors['password'])): ?>
             <p class="text-red-700"><?=$errors['password']?></p>
