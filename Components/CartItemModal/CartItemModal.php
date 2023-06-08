@@ -20,11 +20,9 @@ $cartItemsQuery = "SELECT * FROM cart_items inner join products
 $totalPrice = 0;
 $cartItemsResult = mysqli_query($conn, $cartItemsQuery);
 
-if (isset($_POST['checkout'])) {
-    $totalPrice = 0; // Initialize total price
-
+if(isset($_POST['checkout'])) {
+    $totalPrice = 0;
     if (mysqli_num_rows($cartItemsResult) > 0) {
-        // Loop through cart items and calculate total price
         while ($cartItem = mysqli_fetch_assoc($cartItemsResult)) {
             $totalPrice += $cartItem['total_price'];
         }
@@ -120,7 +118,6 @@ if (isset($_POST['checkout'])) {
                     type="submit"
                     name="checkout"
                     class="bg-blue-600 text-white p-2.5"
-
             >
                 Checkout
             </button>

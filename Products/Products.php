@@ -5,6 +5,13 @@ require '../connection.php';
 
 
 $sql = "SELECT * FROM products";
+if(isset($_GET['category_id'])){
+    $product_category = $_GET['category_id'];
+   $sql = "SELECT * FROM products join categories
+            ON categories.id = products.category_id where categories.id = '$product_category'";
+}else{
+    $sql = "SELECT * FROM products";
+}
 $result = mysqli_query($conn, $sql);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
