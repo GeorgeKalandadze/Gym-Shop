@@ -77,11 +77,13 @@ $cartItemsResult = mysqli_query($conn, $cartItemsQuery);
                 $quantity = $cartItem['quantity'];
                 ?>
 
-                <div class="cart-item">
-                    <img src="<?= $productImage ?>" alt="<?= $productName ?>" class="product-image">
-                    <div class="product-info">
+                <div class="cart-item  flex flex-col ">
+                    <div class="flex mb-[40px] items-center gap-[15px]">
+                    <img src="<?="../uploads/". $productImage ?>" alt="<?= $productName ?>" class="w-[70px]">
+                    <div class="product-info flex flex-col justify-between gap-[20px]">
                         <p class="product-name"><?= $productName ?></p>
                         <p class="product-quantity">Quantity: <?= $quantity ?></p>
+                    </div>
                     </div>
                 </div>
 

@@ -13,7 +13,7 @@ if (isset($_POST['delete'])) {
     // Delete the user from the database using the user ID
     $deleteQuery = "DELETE FROM users WHERE id = '$userID'";
     mysqli_query($conn, $deleteQuery);
-   
+
 }
 ?>
 

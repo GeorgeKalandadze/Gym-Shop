@@ -101,8 +101,8 @@ if (isset($_POST['send'])) {
         Sign in
     </button>
     <p class="signup-link text-gray-700 text-sm text-center mt-[25px]">
-        No account?
-        <a href="" class="underline">Sign up</a>
+        Are You Registered?
+        <a href="../Login/Login.php" class="underline">Sign in</a>
     </p>
 </form>
 

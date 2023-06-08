@@ -64,6 +64,6 @@ if (isset($_POST['login'])) {
     </button>
     <p class="signup-link text-gray-700 text-sm text-center mt-[25px]">
         No account?
-        <a href="" class="underline">Sign up</a>
+        <a href="../Signup/signup.php" class="underline">Sign up</a>
     </p>
 </form>
