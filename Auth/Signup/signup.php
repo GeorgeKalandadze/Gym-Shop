@@ -4,7 +4,7 @@ require '../../Layouts/GuestLayout.php';
 
 $errors = array();
 $name = $email = $password = $password_confirmation = '';
-
+$url = '';
 if (isset($_POST['send'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -37,6 +37,7 @@ if (isset($_POST['send'])) {
     if (empty($errors)) {
         // Insert the data into the database
         $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
+        $url = "../../Products/Products.php";
         if (mysqli_query($conn, $sql)) {
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -45,7 +46,7 @@ if (isset($_POST['send'])) {
 }
 ?>
 
-<form class="bg-white block p-4 w-[400px] rounded-md shadow-md" method="post">
+<form class="bg-white block p-4 w-[400px] rounded-md shadow-md" method="post" action="<?php echo empty($errors) ? $url : ''; ?>">
     <p class="text-xl leading-7 font-semibold text-center text-black">Sign in to your account</p>
     <div class="relative">
         <input

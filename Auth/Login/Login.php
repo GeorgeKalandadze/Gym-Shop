@@ -26,7 +26,6 @@ if (isset($_POST['login'])) {
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $url = "../../Products/Products.php";
-            var_dump($_SESSION);
         } else {
             $errors['login_failed'] = 'Invalid email or password';
         }

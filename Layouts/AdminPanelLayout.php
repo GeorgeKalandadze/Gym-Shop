@@ -13,8 +13,7 @@
 <nav class="flex  items-center justify-center space-x-4  py-5 shadow-md mb-[50px]">
     <a href="../Admin/AdminPanel.php" class="text-gray-800 font-bold hover:text-indigo-600 font-medium">Home</a>
     <a href="../Admin/Products.php" class="text-gray-800 font-bold hover:text-indigo-600 font-medium">Products</a>
-    <a href="#" class="text-gray-800 font-bold hover:text-indigo-600 font-medium">Users</a>
-    <a href="#" class="text-gray-800 font-bold hover:text-indigo-600 font-medium">Orders</a>
+    <a href="../Admin/Users.php" class="text-gray-800 font-bold hover:text-indigo-600 font-medium">Users</a>
 </nav>
 </body>
 </html>
