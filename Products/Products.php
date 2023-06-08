@@ -4,7 +4,6 @@ include '../Layouts/AuthenticatedLayout.php';
 require '../connection.php';
 
 
-// Select products from the database
 $sql = "SELECT * FROM products";
 $result = mysqli_query($conn, $sql);
 
@@ -20,15 +19,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (mysqli_num_rows($checkResult) > 0) {
             $row = mysqli_fetch_assoc($checkResult);
             $cartItemID = $row['id'];
-            $updateQuery = "UPDATE cart_items SET quantity = $quantity WHERE id = $cartItemID";
+            $productQuery = "SELECT * FROM products WHERE id = $productID";
+            $productResult = mysqli_query($conn, $productQuery);
+            $product = mysqli_fetch_assoc($productResult);
+            $totalPrice = $product['price'] * $quantity;
+            $updateQuery = "UPDATE cart_items SET quantity = $quantity , total_price = '$totalPrice'  WHERE id = $cartItemID";
             mysqli_query($conn, $updateQuery);
         } else {
             $productQuery = "SELECT * FROM products WHERE id = $productID";
             $productResult = mysqli_query($conn, $productQuery);
             $product = mysqli_fetch_assoc($productResult);
-
             $totalPrice = $product['price'] * $quantity;
-
             $insertQuery = "INSERT INTO cart_items (user_id, product_id, quantity, total_price)
                             VALUES ($userID, $productID, $quantity, $totalPrice)";
             mysqli_query($conn, $insertQuery);
