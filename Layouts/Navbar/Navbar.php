@@ -25,8 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['category_id'])) {
     <ul class="flex gap-[20px] items-center mr-[70px]">
         <li class="text-[20px] cursor-pointer"><a href="Products.php">All Products</a></li>
         <li class="text-[20px] cursor-pointer" onmouseover="showCategories()">Categories</li>
-        <li class="text-[20px] cursor-pointer">My Orders</li>
+        <li class="text-[20px] cursor-pointer"><a href="Orders.php">My Orders</a></li>
     </ul>
+
     <img src="../../Assets/free-shopping-cart-icon-3041-thumb.png" class="w-[40px] cursor-pointer" onclick="openModal()"/>
 
     <?php
