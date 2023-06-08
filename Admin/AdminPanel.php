@@ -58,13 +58,11 @@ $sql = "SELECT * FROM categories";
 $categories = mysqli_query($conn, $sql);
 ?>
 
-<h1 class="text-3xl font-bold mb-6">Products</h1>
 
 <!-- Create Product Form -->
 <div class=" flex justify-center items-center">
     <form class="w-[500px] bg-white rounded-lg shadow-md border p-[50px]" method="POST"  enctype="multipart/form-data">
         <h2 class="text-xl leading-7 font-semibold text-center text-black mb-4">Create Product</h2>
-
         <div class="relative">
             <input
                     placeholder="Title"

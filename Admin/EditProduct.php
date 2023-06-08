@@ -42,7 +42,6 @@ $errors['category_id'] = 'Category is required';
 }
 
 if (empty($errors)) {
- 
 $existingProductQuery = "SELECT * FROM products WHERE title = '$title'";
 $existingProductResult = mysqli_query($conn, $existingProductQuery);
 move_uploaded_file($tempName, $imagePath);
