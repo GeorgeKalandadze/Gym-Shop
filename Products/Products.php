@@ -1,6 +1,8 @@
 <?php
+session_start();
 include '../Layouts/AuthenticatedLayout.php';
 require '../connection.php';
+
 
 // Select products from the database
 $sql = "SELECT * FROM products";
@@ -9,9 +11,9 @@ $result = mysqli_query($conn, $sql);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['addToCart'])) {
         $productID = $_POST['productID'];
-        $quantity = $_POST['quantity'][$productID]; // Access the specific quantity for the given product ID
-        $userID = 1;
-
+        $quantity = $_POST['quantity'][$productID];
+        $userID =  $_SESSION['user_id'];
+        echo $userID;
         $checkQuery = "SELECT * FROM cart_items WHERE user_id = $userID AND product_id = $productID";
         $checkResult = mysqli_query($conn, $checkQuery);
 

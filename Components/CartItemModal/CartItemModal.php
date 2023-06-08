@@ -1,4 +1,5 @@
 <?php
+
 $servername = "localhost";
 $username = "root";
 $connectionPassword = "";
@@ -11,7 +12,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$userID = 1;
+$userID =  $_SESSION['user_id'];
 $cartItemsQuery = "SELECT * FROM cart_items inner join products
             ON cart_items.product_id = products.id
             WHERE cart_items.user_id = $userID"; // Replace $userID with the actual user ID

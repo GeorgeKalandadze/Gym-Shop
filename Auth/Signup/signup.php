@@ -38,8 +38,7 @@ if (isset($_POST['send'])) {
         // Insert the data into the database
         $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
         if (mysqli_query($conn, $sql)) {
-            // Success! Redirect or display success message
-            // ...
+
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
