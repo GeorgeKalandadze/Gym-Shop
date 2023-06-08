@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php while ($row = mysqli_fetch_assoc($result)): ?>
         <div class="p-[30px]">
             <div class="p-4 transition duration-300 shadow-lg w-[350px] rounded">
-                <img src="<?= $row['image'] ?>" class="w-full h-[20.63rem] cursor-pointer" />
+                <img src="<?="../uploads/". $row['image'] ?>" class="w-full h-[20.63rem] cursor-pointer" />
                 <p class="text-[1.17rem] mt-4 opacity-90 "><?= $row['title'] ?></p>
                 <div class="mt-4 flex justify-between">
                     <h2 class="font-bold text-[1.17rem] ">$<?= $row['price'] ?></h2>
